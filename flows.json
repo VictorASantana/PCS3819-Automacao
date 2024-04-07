@@ -1,0 +1,23 @@
+[
+    {
+        "id": "366e8b2222efa007",
+        "type": "function",
+        "z": "949874d98a5aafe5",
+        "name": "Equipamentos Ergométricos",
+        "func": "const agora = new Date();\nconst hora = agora.getHours();\n\nlet min, max;\n\nif ((hora >= 6 && hora < 10) || (hora >= 13 && hora < 16) || (hora >= 20 && hora <= 23)) {\n    min = 0.3;\n    max = 0.5;\n} else if (hora >= 10 && hora < 13) {\n    min = 0.6;\n    max = 0.9;\n} else if (hora >= 17 && hora < 20) {\n    min = 0.8;\n    max = 1;\n} else {\n    min = 0;\n    max = 0;\n}\n\nconst porcentagemUtilizacao = Math.floor(Math.random() * (max - min + 1)) + min;\nmsg.payload = 0.3 * porcentagemUtilizacao * msg.payload;\nmsg.topic = \"Equipamentos Ergométricos\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 860,
+        "wires": [
+            [
+                "8f284f78b78ee362",
+                "a8dd4be0df778cc3"
+            ]
+        ]
+    }
+]
